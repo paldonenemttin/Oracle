@@ -129,18 +129,19 @@ on br.br_isbn = bO.bO_isbn join tbl_buyer on br.br_bcode = bu.bu_code;
  -- fk설정되지 않아도 데이터 조회는 모두 할 수 있다
  -- 단 join 된 테이블에 데이터가 없으면 null로 표현된다
  
-DROP VIEW view_도서정보;
+DROP VIEW view_도서대여정보;
 
 CREATE VIEW view_도서대여정보 as
-(SELECT br.br_sdate AS 대여일,
+(SELECT br.br_seq AS 주문번호, 
        br.br_bcode AS 회원코드,
        bu.bu_name AS 회원명,
        bu.bu_tel AS 회원연락처,
        br.br_isbn AS ISBN,
        bk.bk_title AS 도서명,
        br.br_edate AS 반납일,
-       br.br_price AS 대여금
-FROM tbl_book_rent BR LEFT JOIN tbl_books BK ON br.br_isbn = bk.bk_isbn 
+       br.br_price AS 대여금,
+       br.br_sdate AS 대여일
+from tbl_book_rent BR LEFT JOIN tbl_books BK ON br.br_isbn = bk.bk_isbn 
 LEFT JOIN tbl_buyer BU ON bR.bR_bcode = bU.bU_code);
 
 SELECT OBJECT_TYPE FROM USER_OBJECTS WHERE OBJECT_NAME='view_도서정보';
