@@ -1,5 +1,6 @@
 -- bookuser 접속
--- books Table과 author, company Table은  Relration관계가 있다
+
+-- books Table과 author, company Table은  Relration관계가 있다.
 --    books의 bk_ccode와 company의 cp_code
 --     books의 bk_acode와 company의 au_code
 -- 연관관계에 잇는  tABLE을 EQ JOIN을 실행할때
@@ -8,9 +9,9 @@
 -- 또한 left join을 하면 값이(null)로 출력된다
 -- join 데이터가 누락되거나 (null) 출력 되는 것은
 -- 데이터에 문제가 발생한 것이다. "참조무결성"이 무너졌다라고 한다
-SELECT * FROM "VIEW_도서정보";
+SELECT * FROM "VIEW_도서대여정보";
 
-SELECT * FROM tbl_books,tbl_author,tbl_company
+SELECT * FROM tbl_books, tbl_author, tbl_company
 WHERE bk_ccode = cp_code AND bk_acode = au_code;
 
 -- 다수의 table이 연관(Replation)관계에 있을때
