@@ -73,7 +73,7 @@ where bk_title like '%왕%';
 --  mysql : concat('%','왕','%')
 select * from tbl_books
 where bk_title like concat('%','왕','%'); 
-
+view_방명록등록자이름
 -- 날짜 칼럼의 앞에 4글자만 보여라
 select left(bk_date,4)
 from tbl_books;
@@ -81,7 +81,7 @@ from tbl_books;
 -- 발행일이 2018년도인 도서들
 select * from tbl_books
 where left(bk_date,4) = 2018;
-
+view_방명록tbl_guest_book
 -- 전체 데이터를 날짜 순으로 보여라
 select * from tbl_books
 order by bk_date;
@@ -147,3 +147,18 @@ create table tbl_bookrent(
     br_edate varchar(10) not null,
     br_price INT
 );
+
+use mydb;
+
+create table tbl_todolist(
+	td_seq bigint auto_increment primary key,
+    td_sdate varchar(10) not null,
+    td_stime varchar(10) not null,
+    td_doit varchar(300) not null,
+    td_edate varchar(10) default '', 
+    td_etime varchar(10) default ''
+);
+
+DESC tbl_todolist;
+
+select * from tbl_todolist;
