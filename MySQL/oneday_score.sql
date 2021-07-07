@@ -5,9 +5,18 @@ use score;
 drop table tbl_score;
 create table tbl_score(
 	sc_seq BIGINT	AUTO_INCREMENT	PRIMARY KEY,
-    sc_stcode char(4) not null,
-    sc_sbcode char(5) not null,
-    sc_score int not null
+    sc_stcode char(8) not null unique,
+	sc_kor int not null,/*A02C5*/
+    sc_eng int not null,/*A86G7*/
+    sc_math int not null,/*A00B5*/
+    sc_ethi int,/*B83E9*/
+    sc_geo int,/*B43N0*/
+    sc_acc int,/*B65Y1*/
+    sc_hygi int,/*B29V7*/
+    sc_info int,/*B71H3*/
+    sc_all int not null,
+    sc_float float,
+    sc_count int
 );
 
 drop table tbl_student;
@@ -48,3 +57,10 @@ add constraint fk_student
 foreign key(as_stcode)
 references tbl_student(st_code);
 
+use score;
+
+alter table tbl_allscore drop foreign key fk_student;
+
+select
+as_seq, as_all, as_info, as_float
+from tbl_allscore;
