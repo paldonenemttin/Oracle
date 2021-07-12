@@ -36,33 +36,44 @@ select * from information_schema.table_constraints where table_name = 'test_like
 -- 여기까지가 테스트 --
 drop table tbl_like;
 create table tbl_like(
-like_hit	bigint	primary key default 0	,
-like_cncode	char(5)	not null	
+like_seq bigint auto_increment primary key,
+like_hit	bigint default 0	,
+like_cncode	char(5)	not null	,
+like_user char(5) 
 );
 
 drop table tbl_image;
 create table tbl_image(
 	img_code	bigint auto_increment		primary key,
-	img_name	varchar(300)	not null	,
-    img_uname  varchar(300)	not null	,
-	img_cncode	char(5)	not null	,
-	img_src	varchar(300)		
+	img_cncode	char(5)	not null			,
+    img_origin	varchar(300)	not null	,
+    img_upname  varchar(300)	not null	
+	
 );
 
+drop table tbl_board;
 create table tbl_board(
 	bd_code	CHAR(5)		PRIMARY KEY,
 bd_title	VARCHAR(50)	NOT NULL	,
 bd_content	VARCHAR(1000)	NOT NULL,	
-bd_writer	VARCHAR(10)	NOT NULL	,
-bd_time	varchar(20)	NOT NULL	
+bd_user	VARCHAR(10)	NOT NULL	,
+bd_time	varchar(20)	NOT NULL	,
+bd_vcount bigint default 0
 );
-
+drop table tbl_notice;
 create table tbl_notice(
 	nt_code	CHAR(5)		PRIMARY KEY,
 nt_title	VARCHAR(50)	NOT NULL	,
 nt_content	VARCHAR(1000)	NOT NULL,	
-nt_writer	VARCHAR(10)	NOT NULL	,	
+nt_user	VARCHAR(10)	NOT NULL	,	
 nt_time	varCHAR(20)	NOT NULL	
 );
 
 use statea;
+
+select * from tbl_image;
+select * from tbl_board;
+select * from tbl_like;
+
+delete from tbl_board
+where bd_code = 'bd001';
