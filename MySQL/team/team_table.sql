@@ -77,3 +77,38 @@ select * from tbl_like;
 
 delete from tbl_board
 where bd_code = 'bd001';
+
+alter table tbl_image
+add constraint fk_code
+foreign key(img_cncode)
+references tbl_board(bd_code)
+on delete cascade;
+
+select * from tbl_board;
+delete from tbl_board
+where bd_code = 'bd001';
+
+insert tbl_board(bd_code, bd_title, bd_content,bd_user,bd_time)
+values('B0000','눈나','데못죽 봐줘','','2021-07-04|25:62:63');
+
+insert tbl_board(bd_code, bd_title, bd_content,bd_user,bd_time)
+values('B0001','눈나','데못죽 봐줘','','2021-07-04|25:62:63');
+
+insert tbl_board(bd_code, bd_title, bd_content,bd_user,bd_time)
+values('B0002','눈나','데못죽 봐줘','','2021-07-04|25:62:63');
+
+select * from tbl_board
+where bd_code != 'B0000';
+
+delete from tbl_board
+where bd_code = 'B0001';
+delete from tbl_board
+where bd_code = 'B0000';
+
+select * from tbl_board;
+
+insert tbl_board(bd_code)
+value('B0000');
+
+select * from tbl_image
+order by img_code desc;

@@ -108,3 +108,4 @@ where g_seq = '3';
 
 select * from tbl_gallery;
 select count(*) from tbl_gallery;
+drop table tbl_files;
